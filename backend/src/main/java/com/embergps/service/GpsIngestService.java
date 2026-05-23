@@ -3,6 +3,7 @@ package com.embergps.service;
 import com.embergps.dto.GpsIngestRequest;
 import com.embergps.dto.GpsPositionDto;
 import com.embergps.exception.DeviceNotFoundException;
+import com.embergps.model.Device;
 import com.embergps.model.GpsPosition;
 import com.embergps.repository.DeviceRepository;
 import com.embergps.repository.GpsPositionRepository;
@@ -33,7 +34,7 @@ public class GpsIngestService {
     public GpsPositionDto ingest(GpsIngestRequest req) {
         // Ensure the device is registered and active
         deviceRepository.findByDeviceId(req.getDeviceId())
-                .filter(d -> d.isActive())
+                .filter(Device::isActive)
                 .orElseThrow(() -> new DeviceNotFoundException(req.getDeviceId()));
 
         Instant capturedAt = req.getTimestamp();

@@ -1,6 +1,7 @@
 package com.embergps.filter;
 
 import com.embergps.config.AppConfig;
+import com.embergps.model.Device;
 import com.embergps.repository.DeviceRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.servlet.*;
@@ -106,7 +107,7 @@ public class ApiKeyAuthFilter implements Filter {
         try {
             String hash = sha256Hex(key);
             return deviceRepository.findByApiKeyHash(hash)
-                    .map(d -> d.isActive())
+                    .map(Device::isActive)
                     .orElse(false);
         } catch (Exception e) {
             log.warn("Error verifying device API key: {}", e.getMessage());
