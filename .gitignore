@@ -1,0 +1,7 @@
+.env
+nginx/ssl/*.pem
+nginx/ssl/*.key
+nginx/ssl/*.crt
+backend/target/
+*.class
+*.jar

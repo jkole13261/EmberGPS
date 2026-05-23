@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EmberGPS — Fleet Tracker</title>
+
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+          integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <header class="app-header">
+        <h1>🔥 EmberGPS</h1>
+        <div class="header-controls">
+            <label for="apiKeyInput">API Key:</label>
+            <input type="password" id="apiKeyInput" placeholder="X-API-Key or X-Admin-Key" />
+            <button id="refreshBtn" onclick="loadData()">⟳ Refresh</button>
+            <span id="lastUpdated"></span>
+        </div>
+    </header>
+
+    <div class="app-body">
+        <!-- Sidebar: device list -->
+        <aside class="sidebar" id="sidebar">
+            <h2>Devices</h2>
+            <ul id="deviceList" class="device-list"></ul>
+        </aside>
+
+        <!-- Map container -->
+        <main class="map-container">
+            <div id="map"></div>
+        </main>
+    </div>
+
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+            integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV/XN/WLEo=" crossorigin=""></script>
+
+    <script src="map.js"></script>
+</body>
+</html>
